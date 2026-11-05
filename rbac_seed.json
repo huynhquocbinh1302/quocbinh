@@ -1,0 +1,41 @@
+{
+  "_README": "Dữ liệu mẫu RBAC, được kiểm tra và nạp idempotent trong transaction.",
+  "departments": [
+    {"name": "Ban Giám đốc", "description": "Điều hành chung toàn hệ thống"},
+    {"name": "Phòng Quản lý Chất lượng", "description": "Hồ sơ và quy trình ISO/IEC 17043"},
+    {"name": "Phòng Kỹ thuật", "description": "Nghiệp vụ kỹ thuật/thử nghiệm"},
+    {"name": "Phòng Đánh giá", "description": "Đánh giá năng lực/thành thạo"},
+    {"name": "Phòng Kế toán", "description": "Tài chính, hóa đơn, công nợ"},
+    {"name": "Phòng Kinh doanh", "description": "Khách hàng, hợp đồng, báo giá"},
+    {"name": "Phòng Hành chính", "description": "Văn thư và hỗ trợ vận hành"}
+  ],
+  "permissions": [
+    {"code": "system.manage_users", "name": "Quản lý tài khoản người dùng", "module": "Hệ thống"},
+    {"code": "system.manage_permissions", "name": "Quản lý phân quyền", "module": "Hệ thống"},
+    {"code": "system.view_audit_log", "name": "Xem nhật ký kiểm tra", "module": "Hệ thống"},
+    {"code": "qc.create_record", "name": "Tạo hồ sơ chất lượng", "module": "Quản lý chất lượng"},
+    {"code": "qc.edit_record", "name": "Chỉnh sửa hồ sơ chất lượng", "module": "Quản lý chất lượng"},
+    {"code": "qc.approve_result", "name": "Phê duyệt kết quả chất lượng", "module": "Quản lý chất lượng"},
+    {"code": "qc.view_record", "name": "Xem hồ sơ chất lượng", "module": "Quản lý chất lượng"},
+    {"code": "assessment.conduct", "name": "Thực hiện đánh giá thành thạo", "module": "Đánh giá"},
+    {"code": "assessment.view_report", "name": "Xem báo cáo đánh giá", "module": "Đánh giá"},
+    {"code": "accounting.view_invoice", "name": "Xem hóa đơn/chứng từ", "module": "Kế toán"},
+    {"code": "accounting.manage_invoice", "name": "Lập/chỉnh sửa hóa đơn", "module": "Kế toán"},
+    {"code": "sales.manage_contract", "name": "Quản lý hợp đồng khách hàng", "module": "Kinh doanh"},
+    {"code": "sales.view_customer", "name": "Xem thông tin khách hàng", "module": "Kinh doanh"},
+    {"code": "admin.secretary_tasks", "name": "Công tác văn thư, hành chính", "module": "Hành chính"},
+    {"code": "customer.view_catalog", "name": "Xem danh mục chương trình", "module": "Cổng khách hàng"},
+    {"code": "customer.manage_registration", "name": "Quản lý phiếu đăng ký của mình", "module": "Cổng khách hàng"},
+    {"code": "customer.view_own_result", "name": "Xem kết quả của mình", "module": "Cổng khách hàng"}
+  ],
+  "roles": [
+    {"name": "Admin", "permissions": ["system.manage_users", "system.manage_permissions", "system.view_audit_log", "qc.create_record", "qc.edit_record", "qc.approve_result", "qc.view_record", "assessment.conduct", "assessment.view_report", "accounting.view_invoice", "accounting.manage_invoice", "sales.manage_contract", "sales.view_customer", "admin.secretary_tasks", "customer.view_catalog", "customer.manage_registration", "customer.view_own_result"]},
+    {"name": "Quản trị hệ thống", "permissions": ["system.manage_users", "system.view_audit_log"]},
+    {"name": "Thư ký hệ thống", "permissions": ["admin.secretary_tasks", "qc.view_record"]},
+    {"name": "Nhân viên", "permissions": ["qc.create_record", "qc.edit_record", "qc.view_record"]},
+    {"name": "Kế toán", "permissions": ["accounting.view_invoice", "accounting.manage_invoice"]},
+    {"name": "Kinh doanh", "permissions": ["sales.manage_contract", "sales.view_customer"]},
+    {"name": "Chuyên gia đánh giá", "permissions": ["assessment.conduct", "assessment.view_report", "qc.view_record"]},
+    {"name": "Khách hàng", "permissions": ["customer.view_catalog", "customer.manage_registration", "customer.view_own_result"]}
+  ]
+}
